@@ -25,29 +25,32 @@ class Roubado:
         print("Carro roubado parou")
         self.notificy('parar')
 
-
+    def re(self):
+        print('Carro roubado deu a ré')
+        self.notificy('re')
 
 class Policia:
     def direita(self):
-        return "VIATURA virou a direita"
+        print("VIATURA virou a direita")
         
     def esquerda(self):
-        return "VIATURA virou a esquerda"
+        print("VIATURA virou a esquerda")
 
     def frente(self):
-        return "VIATURA seguiu em frente"
+        print("VIATURA seguiu em frente")
 
     def parar(self):
-        return "VIATURA parou"
+        print("VIATURA parou")
 
     def update(self, acao):
         acoes = {
-            'parar': self.parar(),
-            'frente': self.frente(),
-            'direita': self.direita(),
-            'esquerda': self.esquerda(),
+            'parar': self.parar,
+            'frente': self.frente,
+            'direita': self.direita,
+            'esquerda': self.esquerda,
             }
-        print(acoes[acao])
+        if acao in acoes:
+            acoes[acao]()
         
 if __name__ == '__main__':
     policia = Policia()
@@ -55,6 +58,4 @@ if __name__ == '__main__':
 
     ladrao.subscribe(policia)
 
-    ladrao.direita()
-    ladrao.esquerda()
-    ladrao.parar()
+    ladrao.re()
